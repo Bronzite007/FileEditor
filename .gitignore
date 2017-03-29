@@ -1,4 +1,4 @@
-#exclude everything in the setting directory
-/.settings/
-/.classpath
-/.project
+# exclude everything in the setting directory
+.settings/
+.classpath
+.project
