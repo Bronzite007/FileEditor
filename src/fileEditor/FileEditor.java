@@ -20,14 +20,18 @@ public class FileEditor extends JFrame{
 	private JButton browse;
 	
 	//Define a directory to count the level
-	private in level = 0;
+	private int level = 0;
 	
 	public FileEditor(){
 		this.init();
 	}
 	
 	//File initialization
-	public void init() {}
+	public void init() {
+		this.setTitle("FileEditor");
+		
+		
+	}
 	
 	//File save
 	private void saveFile() {}
