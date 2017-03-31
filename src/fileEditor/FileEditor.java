@@ -29,15 +29,72 @@ public class FileEditor extends JFrame{
 	//File initialization
 	public void init() {
 		this.setTitle("FileEditor");
-		
-		
+		//set the frame size and location
+		this.setBounds(300,600,300,300);
+        selectField = new JTextField(40); 
+        
+        //create a button called browse
+        browse = new JButton("Browse");  
+        //create a action listener
+        browse.addActionListener(new ActionListener(){
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				// TODO Auto-generated method stub
+				FileEditor.this.level = 0;
+				String path = selectField.getText();
+				
+				openDirOrFile(path.replaceAll("//", "\\\\"));
+			}
+        	
+        });
+        //create a new panel
+        JPanel upPanel = new JPanel(new FlowLayout(FlowLayout.LEFT));  
+        
+        //set the background color
+        upPanel.setBackground(Color.CYAN);  
+        
+        //add selected field
+        upPanel.add(selectField);
+
+        //add browse button
+        upPanel.add(browse); 
+
+        //add the upPanel to the north
+        this.add(upPanel, BorderLayout.NORTH);  
+
+        /* 
+         * create an area for editing
+         */ 
+        editArea = new JTextArea();  
+        ScrollPane scollPanel = new ScrollPane(ScrollPane.SCROLLBARS_AS_NEEDED);  
+        scollPanel.add(editArea);  
+        this.add(scollPanel, BorderLayout.CENTER);  
+
+        /* 
+         * create a listening action for the button
+         */ 
+        saveButton = new JButton("Save");  
+        saveButton.addActionListener(new ActionListener() {  
+            public void actionPerformed(ActionEvent ae) {  
+                // save 
+                saveFile();  
+            }
+        }); 
+        
+        JPanel southPanel = new JPanel();  
+        southPanel.setBackground(Color.green);  
+        southPanel.add(saveButton);  
+        this.add(southPanel, BorderLayout.SOUTH);  
+        this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);  
+        this.setVisible(true);  
+
 	}
 	
 	//File save
 	private void saveFile() {}
 	
 	//open directory or file
-	private void openDirOrFile() {}
+	private void openDirOrFile(String absolutePath) {}
 	
 	//show directory and build a tree map
 	private void showDir() {}
